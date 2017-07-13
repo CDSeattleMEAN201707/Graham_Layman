@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <form action="/createPost" method="POST">
+       Name: <input type="text" name="name" value="">
+       Post: <textarea name="post" rows="4" cols="40"></textarea>
+        <input type="submit" name="" value="Post Message">
+    </form>
+   
+        
+   
+    <% for(let idx in posts){%>
+        <div class="post_wrap">
+        <h3><%=posts[idx].name%>: Posted...</h3>
+        <h4><%=posts[idx].post%></h4>
+        <% for(let y=0; y < posts[idx]._comments.length;y++){%>
+            <h5><%=posts[idx]._comments[y].name%> said:</h5>
+            <p><%=posts[idx]._comments[y].comment%></p>
+        <%}%>
+        <form action="/createComment/<%=posts[idx]._id%>" method="POST">
+            Name:<input type="text" name="name" value="">
+            Comment:<textarea name= "comment" rows="2" cols="20"></textarea>
+            <input type="submit" name="" value="Post Comment">
+        </form>
+        </div>
+    <%}%>
+   
+    </body>
+</html>

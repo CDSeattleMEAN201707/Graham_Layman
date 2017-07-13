@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <%for(let key in quotes){%>
+            <h4><%=quotes[key].name%></h4>
+            <%if(quotes[key].createdAt){%>
+            <h6><%=quotes[key].createdAt.format("YYYY-MM-DD")%></h6>
+            <%}%>
+            <p><%=quotes[key].quote%></p>
+
+        <%}%>
+    </body>
+</html>
