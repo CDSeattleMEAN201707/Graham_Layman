@@ -1,0 +1,9 @@
+form .ng-valid {color:green; } 
+form .ng-untouched { color:black;}
+form .ng-invalid{ color: red; }
+form .ng-pristine { color:blue;}
+
+form .ng-dirty { }
+form .ng-touched { }
+
+

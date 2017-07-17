@@ -1,0 +1,11 @@
+
+<div *ngFor="let quote of quotes; let idx = index">
+  <p>{{quote.comment}} <br> -{{quote.author}}</p>
+  <p>{{quote.votes}}</p>
+  <p>
+    <button type="" (click)="upVote(idx)">Vote Up</button>
+    <button type="" (click)="downVote(idx)">Vote Down</button>
+    <button type="" (click)="deleteQuote(idx)">Delete</button>
+  </p>
+
+</div>

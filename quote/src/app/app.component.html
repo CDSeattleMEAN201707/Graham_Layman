@@ -1,0 +1,31 @@
+
+<form #quoteForm = "ngForm" (submit)="createQuote()">
+  <input 
+    type="text" 
+    name="author" 
+    required
+    minlength="4"
+    [(ngModel)]="quote.author"
+    #author = "ngModel"
+    placeholder="Author..."> {{ author.errors | json }}
+  <textarea 
+    name = "comment"
+    rows="4" 
+    cols="40"
+    required 
+    minlength="4"
+    [(ngModel)]="quote.comment"
+    #comment = "ngModel"
+    placeholder="quote..."></textarea> {{ comment.errors | json }}
+  <input 
+    type="submit"
+    [disabled]="!quoteForm.form.valid" 
+    value="Create Quote">
+</form>
+
+<app-quote-list 
+  [quotes]="quotes" 
+  (emitUp)="upVote($event)" 
+  (emitDown)="downVote($event)"
+  (emitDelete)="deleteQuote($event)">
+</app-quote-list>

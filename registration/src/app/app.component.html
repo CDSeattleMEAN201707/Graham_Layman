@@ -1,0 +1,112 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<h1>Registration</h1>
+<div *ngIf="formSuccess">
+    text upon successful registration goes here...
+    {{users[0].firstName}} great job Registering!!
+    we have sent your email address {{users[0].email}} to ever known spammer we can think of. 
+    Have a wonderful day.
+</div>
+
+<form #regForm="ngForm" (submit)="formSubmit()">
+    <label for="firstName">First Name:</label>
+    <input 
+        type="text" 
+        name="firstName" 
+        value=""
+        required
+        minlength="4"
+        [(ngModel)]="user.firstName"
+        #firstName="ngModel"> {{firstName.errors | json}}
+    <br>
+    Last Name:<input 
+        type="text" 
+        name="lastName" 
+        value=""
+        required
+        minlength="4"
+        [(ngModel)]="user.lastName"
+        #lastName="ngModel"> {{lastName.errors | json}}>
+    <br>
+    Email: <input 
+        type="text" 
+        name="email" 
+        value=""
+        required
+        pattern= '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+        [(ngModel)]="user.email"
+        #email="ngModel"> {{email.errors | json}}>
+    <br>
+    Password: <input 
+        type="password" 
+        name="password" 
+        value=""
+        pattern = '^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}'
+        [(ngModel)]="user.password"
+        #password = "ngModel"> {{password.errors | json}}
+
+    <br>
+    Password Confirmation: <input 
+        type="password" 
+        name="confirm" 
+        value=""
+        required
+        [pattern] = "user.password"
+        [(ngModel)]="user.confirm"
+        #confirm = "ngModel"> {{confirm.errors | json}}
+    <br>
+    Street: <input 
+        type="text" 
+        name="street" 
+        value=""
+        required
+        [(ngModel)]="user.street"
+        #street = "ngModel"> {{street.errors | json}}
+    <br>
+    Unit/Apt # <input 
+        type="text" 
+        name="" 
+        value="">
+    <br>
+    City: <input 
+        type="text" 
+        name="city" 
+        value=""
+        required
+        [(ngModel)]="user.city"
+        #city = "ngModel"> {{city.errors | json}}
+    <br>
+    State: <select
+        name="state"
+        required
+        [(ngModel)]="user.state"
+        #state = "ngModel"> 
+        <option selected disabled value = "">Select a State</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Washington">Washington</option>
+        <option value="Oregon">Oregon</option>
+        <option value="California">California</option>
+    </select>{{state.errors | json}} 
+    <br>
+    I'm feeling lucky:<input 
+        type="radio" 
+        name="feeling" 
+        value="yes"
+        required
+        [(ngModel)]="user.mood"
+        #mood = "ngModel"
+        > Yes
+        <input 
+            type="radio" 
+            name="feeling" 
+            value="no"
+            required
+            [(ngModel)]="user.mood"
+            #mood = "ngModel"
+            > No {{mood.errors | json}}<br>
+    <input 
+        [disabled]="!regForm.form.valid"
+        type="submit" 
+        name="" 
+        value="Register !!">
+</form>
